@@ -29,6 +29,8 @@ def test_filter_by_state_invalid(list_of_dict_fixture):
         processing.filter_by_state([])
     with pytest.raises(ValueError):
         processing.filter_by_state(list_of_dict_fixture, 'True')
+    with pytest.raises(ValueError):
+        processing.filter_by_state([], 'True')
 
 
 def test_sort_by_date_invalid(list_of_dict_fixture):
@@ -36,3 +38,5 @@ def test_sort_by_date_invalid(list_of_dict_fixture):
         processing.sort_by_date([])
     with pytest.raises(ValueError):
         processing.sort_by_date(list_of_dict_fixture, 'True')
+    with pytest.raises(ValueError):
+        processing.sort_by_date([], 'True')

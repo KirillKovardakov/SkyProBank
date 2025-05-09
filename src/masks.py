@@ -8,7 +8,7 @@ def get_mask_card_number(card_numb: Union[str]) -> Union[str]:
     if card_numb == '' or card_numb is None or not isinstance(card_numb, str):
         raise 'Введите карту'
     if not card_numb.isdigit() or len(card_numb) != 16:
-        raise 'Такой карты не существует!'
+        return 'Такой карты не существует!'
     else:
         for i, numb in enumerate(card_numb):
             if i % 4 == 0 and i != 0:
@@ -25,6 +25,6 @@ def get_mask_account(account_number: Union[str]) -> Union[str]:
     mask_account = ''
     if isinstance(account_number, str):
         if account_number is None or account_number == '' or not account_number.isdigit() or len(account_number) != 20:
-            raise 'Такого номера счёта не существует!'
+            return 'Такого номера счёта не существует!'
         mask_account = "**" + account_number[-4::]
     return mask_account
