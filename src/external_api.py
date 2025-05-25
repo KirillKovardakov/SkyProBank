@@ -9,8 +9,8 @@ load_dotenv()
 def convert_to_rub(transaction: dict) -> float:
     """принимает на вход транзакцию и возвращает сумму транзакции (amount) в рублях"""
     api_key = os.getenv('API_KEY')
-    amount = transaction['amount']
-    currency = transaction['currency']
+    amount = transaction.get('operationAmount').get('amount')
+    currency = transaction.get('operationAmount').get('currency').get('code')
 
     if currency == "RUB":
         return float(amount)
