@@ -1,6 +1,13 @@
 # ../test/test_utils.py
 import json
 import os
+import logging
+
+logging.basicConfig(level=logging.DEBUG,
+                    format='%(asctime)s - %(name)s - %(funcName)s - %(levelname)s : %(message)s',
+                    filename='../logs/utils.log',  # Запись логов в файл
+                    filemode='w')
+logger = logging.getLogger("app.utils")
 
 
 def load_transactions(file_path: str) -> list:
@@ -11,8 +18,11 @@ def load_transactions(file_path: str) -> list:
         try:
             data = json.load(file)
             if isinstance(data, list):
+                logger.info(f"Returned data from file {file_path}")
                 return data
             else:
+                logger.error(f'Incorrect input data in {file_path}')
                 return []
         except json.JSONDecodeError:
+            logger.error(f'Incorrect input data in {file_path}')
             return []
