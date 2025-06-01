@@ -28,7 +28,7 @@ def test_get_mask_account_basic(my_account_numb, expected):
     assert masks.get_mask_account(my_account_numb) == expected
 
 
-def test_get_mask_account_invalid(wrong_numbs_fixture):
+def test_get_mask_account_invalid():
     with pytest.raises(TypeError):
         masks.get_mask_account('73654108430j35875642')
     with pytest.raises(TypeError):
