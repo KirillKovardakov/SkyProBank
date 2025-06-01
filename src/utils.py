@@ -36,6 +36,7 @@ def load_transactions(file_path: str) -> list:
 
 
 def read_excel_files(filepath: str) -> DataFrame:
+    """Read csv or xlsx file and return data from file"""
     if not os.path.exists(filepath):
         logger.error(f'File not found {filepath}')
         raise FileNotFoundError("File not found!")
