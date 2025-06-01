@@ -8,11 +8,6 @@ def wrong_cards_fixture() -> tuple:
 
 
 @pytest.fixture
-def wrong_numbs_fixture() -> tuple:
-    return '73654108430j35875642', '32', 4234, '3412412312312412355', '', None
-
-
-@pytest.fixture
 def list_of_dict_fixture() -> list[dict]:
     return ([{'id': 41428829, 'state': 'EXECUTED', 'date': '2019-07-03T18:35:29.512364'},
              {'id': 939719570, 'state': 'EXECUTED', 'date': '2018-06-30T02:08:58.425572'},
