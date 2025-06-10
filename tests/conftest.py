@@ -2,9 +2,9 @@ import pytest
 
 
 @pytest.fixture
-def wrong_cards_fixture() -> tuple:
-    return 7000792289606361, [7365410843013587], {'7365410843013587', }, '7390', '7654p1p843j13587',
-    '7654p1p84k3j135;87', '736541084301358', '', '73654108430135874305080', None
+def wrong_cards_fixture():
+    return (7000792289606361, [7365410843013587], {'7365410843013587', }, '7390', '7654p1p843j13587',
+            '7654p1p84k3j135;87', '736541084301358', '', '73654108430135874305080', None)
 
 
 @pytest.fixture
@@ -131,3 +131,21 @@ def list_of_transactions_fixture() -> list[dict]:
             }
         ]
     )
+
+
+@pytest.fixture
+def fake_transactions():
+    return [
+        {
+            "id": 1,
+            "state": "EXECUTED",
+            "date": "2022-01-01T10:00:00.000000",
+            "description": "Перевод организации",
+            "from": "Visa Classic 1234567890123456",
+            "to": "Счет 12345678901234567890",
+            "operationAmount": {
+                "amount": "1000.00",
+                "currency": {"name": "руб.", "code": "RUB"}
+            }
+        },
+    ]
