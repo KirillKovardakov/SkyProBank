@@ -62,21 +62,19 @@ def test_read_csv_file():
         df = read_excel_files("../data/transactions.csv")
 
         mock_read_csv.assert_called_once_with("../data/transactions.csv", sep=None, engine='python')
-        assert not df.empty
-        assert df.shape == (2, 2)
+        assert len(df) == 2
 
 
 def test_read_xlsx_file():
     mock_data = pd.DataFrame({'col1': [1, 3], 'col2': [2, 4]})
     with patch('pandas.read_excel') as mock_read_excel, \
-            patch('os.path.exists', return_value=True):  # Мокаем os.path.exists
+            patch('os.path.exists', return_value=True):  # Mock os.path.exists
         mock_read_excel.return_value = mock_data
 
         df = read_excel_files('../data/transactions_excel.xlsx')
 
         mock_read_excel.assert_called_once_with('../data/transactions_excel.xlsx')
-        assert not df.empty
-        assert df.shape == (2, 2)
+        assert len(df) == 2
 
 
 def test_file_not_found():

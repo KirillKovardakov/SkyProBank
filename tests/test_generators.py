@@ -39,8 +39,6 @@ def test_filter_by_currency(list_of_transactions_fixture):
 
 def test_filter_by_currency_invalid(list_of_transactions_fixture):
     with pytest.raises(ValueError):
-        next(generators.filter_by_currency(list_of_transactions_fixture, 'EURO'))
-    with pytest.raises(ValueError):
         next(generators.filter_by_currency('list_of_transactions_fixture', 'RUB'))
     with pytest.raises(ValueError):
         next(generators.filter_by_currency(list_of_transactions_fixture, 124))

@@ -3,10 +3,8 @@ import json
 import os
 import logging
 import pandas as pd
-import csv
 from pathlib import Path
 
-from black.linegen import delimiter_split
 from pandas.core.interchange.dataframe_protocol import DataFrame
 
 logging.basicConfig(level=logging.DEBUG,
@@ -35,8 +33,9 @@ def load_transactions(file_path: str) -> list:
             return []
 
 
-def read_excel_files(filepath: str) -> DataFrame:
+def read_excel_files(filepath: str) -> list:
     """Read csv or xlsx file and return data from file"""
+    df = DataFrame
     if not os.path.exists(filepath):
         logger.error(f'File not found {filepath}')
         raise FileNotFoundError("File not found!")
@@ -47,7 +46,9 @@ def read_excel_files(filepath: str) -> DataFrame:
         elif Path(filepath).suffix == ".xlsx":
             logging.info(f'Reading xlsx file {filepath}')
             df = pd.read_excel(filepath)
-        return df
+        df.dropna(how='all', inplace=True)
+        df = df.where(pd.notna(df), None)
+        return df.to_dict('records')
 
     except Exception:
         logger.error(f'Something went wrong in {filepath}')
