@@ -5,6 +5,8 @@ from src.widget import get_date, mask_account_card
 
 
 def main():
+    """Отвечает за основную логику проекта с пользователем и связывает функциональности
+между собой."""
     ALLOWED_LIST_OF_STATUSES = ['executed', 'canceled', 'pending']
     CONSOLE_GET_STATUS = f"Введите статус, по которому необходимо выполнить фильтрацию.\nДоступные для фильтровки статусы: EXECUTED, CANCELED, PENDING\n"
     filepath = ''
